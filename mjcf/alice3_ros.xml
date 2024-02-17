@@ -1,0 +1,48 @@
+<mujoco>
+    <compiler coordinate="local" angle="radian" meshdir="meshes" strippath="false" />
+    <option timestep="0.008" iterations="40" solver="CG" tolerance="1e-10" />
+
+    <visual>
+        <rgba haze=".3 .3 .3 1" />
+    </visual>
+
+    <!-- <default>
+        <joint armature="0.6" frictionloss="0.03" />
+    </default> -->
+
+
+    <worldbody>
+    
+        <body name="a" pos="0 0 0.9">
+            <camera name="track" pos="1.5 -2.465 0.916"
+                xyaxes="0.866 0.500 0.000 -0.171 0.296 0.940" mode="trackcom" />
+            <!-- <camera name="bodycam" pos="0.1 0 0" euler="1.5708  -1.5708 0" fovy="80"/> -->
+
+
+            <inertial mass="1.0" pos="0 0 0"
+                fullinertia="0 0 0 0 0 0 0" />
+            <geom type="mesh" mesh="b" />
+            <site name="imu" size="0.01" />
+            <freejoint />
+
+
+        </body>
+
+    </worldbody>
+
+    <actuator>
+        <position joint="joint1" name="joint1" ctrlrange="-0.174533 1.5708" ctrllimited="true"
+            kp="2700" user="34.0" />
+
+    </actuator>
+
+    <!-- <sensor>
+        <gyro name="angular_velocity" site="imu" noise="5e-4" cutoff="34.9" />
+        <accelerometer name="linear_acceleration" site="imu" noise="1e-2" cutoff="157" />
+    </sensor> -->
+
+    <sensor>
+        <framepos name="framepos_body_main" objtype="body" objname="pelvis" />
+        <framequat name="framexaxis_body_main" objtype="body" objname="pelvis" />
+    </sensor>
+</mujoco>
