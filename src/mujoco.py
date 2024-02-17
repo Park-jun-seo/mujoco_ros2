@@ -41,7 +41,7 @@ class MujocoNode(Node):
 
     def mujoco(self):
         current_script_path = os.path.abspath(__file__)
-        root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path))) + "/share/mujoco_fold/mjcf/scene.xml"
+        root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path))) + "/share/mujoco/mjcf/scene.xml"
         m = mujoco.MjModel.from_xml_path(root)
         d = mujoco.MjData(m)
         with mujoco.viewer.launch_passive(m, d, key_callback=self.key_callback) as viewer:
